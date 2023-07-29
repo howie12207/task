@@ -46,8 +46,8 @@ function App() {
     const [list, setList] = useState([]);
     useEffect(() => {
         const fetchList = async () => {
-            const res = await apiGetRemindList({ startTime: toDateStartTime(now), size: 7 });
-            setList(res);
+            const res = await apiGetRemindList({ startTime: toDateStartTime(now), size: 5 });
+            setList(res || []);
         };
         fetchList();
     }, []);
@@ -88,7 +88,7 @@ function App() {
     };
 
     return (
-        <main className="p-4">
+        <main className="p-4 w-[240px]">
             {Object.entries(showList)
                 .sort((a, b) => a[0] - b[0])
                 .map(monthItem => {
